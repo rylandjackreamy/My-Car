@@ -1,0 +1,65 @@
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(13, OUTPUT);
+  pinMode(12, OUTPUT);
+  pinMode(11, OUTPUT);
+  pinMode(9, OUTPUT);
+  analogWrite(13, 250);
+  analogWrite(12, 250);
+}
+
+void forw(){
+  analogWrite(13, 250);
+  go();
+}
+
+void back(){
+  analogWrite(13, 100);
+  go();
+}
+
+void right(){
+  analogWrite(12, 250);
+}
+
+void left(){
+  analogWrite(12, 100);
+}
+
+void turn(){
+  int x = 0;
+  while (x < 250){
+    analogWrite(3, x);
+    x += 5;
+    delay(5);
+  }
+  delay(500);
+  analogWrite(3, 0);
+}
+
+void go(){
+  int x = 0;
+  while (x < 255){
+    analogWrite(11, x);
+    x += 5;
+    delay(5);
+  }
+}
+
+void stopp(){
+  analogWrite(11, 0);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  right();
+  turn();
+  back();
+  delay(500);
+  stopp();
+  left();
+  turn();
+  forw();
+  delay(500);
+  stopp();
+}
